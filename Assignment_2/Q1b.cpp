@@ -8,6 +8,7 @@ void setPoints(double[36][2]);
 void printPoints(double [36][2]);
 
 //-------------------------* main function *-------------------------
+// to run tests
 int main()
 {
     double points[36][2];   // Declaring a array to stored grid
@@ -24,15 +25,16 @@ int main()
 double averageDistance(double points[36][2])
 {
     double count=0; // double variable to store the sum of distance.
-    for(int i=0;i<36;i++)  
-    for(int j=0;j<36;j++)
+    for(int i=0;i<36;i++) // fixeing one point. 
+    for(int j=0;j<36;j++) // runing over all points including the fix-point.
     {
-        count+= (abs(points[i][0]-points[j][0])+abs(points[i][1]-points[j][1]));
+        count+= (abs(points[i][0]-points[j][0])+abs(points[i][1]-points[j][1])); // adding the abs distance of points along grid.
 
     }
-    return count/(36*36);
+    return count/(36*36); // returning the average of distance between points along the grid.
 }
 //-------------------------* setPoints function *-------------------------
+// this function will make a 6x6 grid of unit distance.
 void setPoints(double points[36][2])
 {
     for(int i=0;i<36;i++)
@@ -42,6 +44,7 @@ void setPoints(double points[36][2])
     }
 }
 //-------------------------* printPoints function *-------------------------
+// this function is to print the matrix.
 void printPoints(double points[36][2])
 {
     cout<<endl;
