@@ -21,7 +21,7 @@ def main():
 
 
 
-
+#-------------------------* bunch of test function *--------------------------------------------
 def test_function4(x,y,z):
     return z+1 
 def test_function3(x):
@@ -33,6 +33,9 @@ def test_function1(x,y):
 def test_function2(x,y,z):
     return 1-z-x
 
+
+#---------------------* function Ploter *--------------------------------------------
+# this function generate the data from given function to plot graph
 def functionPloter(function,initValue,h,N):
     data = [] 
     for i in range(N):
@@ -40,6 +43,8 @@ def functionPloter(function,initValue,h,N):
     return data
 
 
+#--------------------* boundary Value Problem *-----------------------------------------
+# This function will take a boundary Value Problem and Using the algorithm given in notes find the best plot.
 def boundaryValueProblem(function,firstBoundaryCondition,secondBoundaryCondition,N,guess,guessVariation,tolerance):
 
     h = (secondBoundaryCondition[0]-firstBoundaryCondition[0])/(N+0.0)
@@ -52,8 +57,8 @@ def boundaryValueProblem(function,firstBoundaryCondition,secondBoundaryCondition
     if (fb1 > fb0):
         GHigh = guess
         while(fb1 > fb0):
-            print(fb1)
-            print(fb0)
+            # print(fb1)
+            # print(fb0)
             # print("testPoint2")
             guess = guess - guessVariation
             fb1=RK4_method2(function,firstBoundaryCondition+(guess,),h,N)[-1][1]
@@ -99,15 +104,21 @@ def boundaryValueProblem(function,firstBoundaryCondition,secondBoundaryCondition
         
     
 
-
+# ----------------* euler's mathod *-----------------------------
+# implamented as given in notes
 def eulerS_method(function1,initValue,h,N):
     points=[initValue]
+
     for i in range(N):
         newPoint =(points[i][0]+h,points[i][1] + h*function1(*points[i]))
         points.append(newPoint)
 
     return points
 
+
+
+# ------------------* Predictor Corrector Method *----------------------
+# implamented as given in the notes
 def predictor_corrector_method(function1,initValue,h,N):
     points=[initValue]
     for i in range(N):
@@ -117,7 +128,8 @@ def predictor_corrector_method(function1,initValue,h,N):
         newPointC =(points[i][0]+h,points[i][1] + (k1+k2)/2)
         points.append(newPointC)
     return points
-
+#-------------------* RK4 Method *-------------------------
+# implament as given in the notes
 def RK4_method(function1,initValue,h,N):
     points=[initValue]
     for i in range(N):
@@ -129,7 +141,9 @@ def RK4_method(function1,initValue,h,N):
         newPoint =(X+h,Y + (k1+(2*k2)+(2*k3)+k4)/6)
         points.append(newPoint)
     return points
-
+#-----------------* Rk4 for second order Method *------------------------
+# this is not given in the notes. This is just a little modificaion of The Method given in the Notes
+# here we are using k and l. where k are for the currection in value of f(x) and l are currection in values of f'(x). 
 def RK4_method2(function2,initValue,h,N):
     points=[initValue]
     for i in range(N):
