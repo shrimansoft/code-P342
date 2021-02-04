@@ -1,17 +1,19 @@
 import lib.My_library as my
 import math as m
 
+# this is the given formula
 def givenFunction(thita):
     L = 1
     g = 9.8
     thitaM = m.pi/4
-    return 4*(m.sqrt(L/g))*(1/(2*(m.sqrt(m.sin(thitaM/2)**2 - m.sin(thita/2)**2))))
+    return 4*(m.sqrt(L/g))*(1/m.sqrt(1-((m.sin(thitaM/2)**2)*(m.sin(thita)**2))))
 
 
-T = my.simpson_method(givenFunction,10,(0,m.pi/4.001))
+# applying the simpson integration technique 
+T = my.simpson_method(givenFunction,10,(0,m.pi/2))
 
-print("Time Period of oscilation is " , T, "s")
+print("Time Period of oscilation is "+ str(T)+"s")
 
 #----------Out put -------------
 
-# ('Time Period of oscilation is ', 3.7140730452388553, 's')
+# Time Period of oscilation is 2.08732001748s
